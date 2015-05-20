@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D88452C1B0BC921009431EC /* Remote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D88452B1B0BC921009431EC /* Remote.xcdatamodeld */; };
-		4D88452D1B0BC921009431EC /* Remote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D88452B1B0BC921009431EC /* Remote.xcdatamodeld */; };
 		4D8845331B0BC96C009431EC /* Local.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845311B0BC96C009431EC /* Local.xcdatamodeld */; };
 		4D8845341B0BC96C009431EC /* Local.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845311B0BC96C009431EC /* Local.xcdatamodeld */; };
 		4D8845431B0BCD94009431EC /* Local.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845421B0BCD94009431EC /* Local.m */; };
@@ -23,6 +21,14 @@
 		4D8845511B0CE695009431EC /* LocalFetch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D88454F1B0CE695009431EC /* LocalFetch.m */; };
 		4D8845531B0CE79D009431EC /* LocalPredicates.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845521B0CE79D009431EC /* LocalPredicates.m */; };
 		4D8845541B0CE79D009431EC /* LocalPredicates.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845521B0CE79D009431EC /* LocalPredicates.m */; };
+		4D8845591B0CF2D6009431EC /* Remote.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845581B0CF2D6009431EC /* Remote.m */; };
+		4D88455A1B0CF2D6009431EC /* Remote.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845581B0CF2D6009431EC /* Remote.m */; };
+		4D8845651B0CF7BC009431EC /* Remote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845621B0CF7BC009431EC /* Remote.xcdatamodeld */; };
+		4D8845661B0CF7BC009431EC /* Remote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845621B0CF7BC009431EC /* Remote.xcdatamodeld */; };
+		4D8845681B0D02D1009431EC /* RemotePushPull.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845671B0D02D1009431EC /* RemotePushPull.m */; };
+		4D88456A1B0D09B1009431EC /* RemoteConflict.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845691B0D09B1009431EC /* RemoteConflict.m */; };
+		4D88456B1B0D09B1009431EC /* RemoteConflict.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845691B0D09B1009431EC /* RemoteConflict.m */; };
+		4D88456C1B0D0AFF009431EC /* RemotePushPull.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8845671B0D02D1009431EC /* RemotePushPull.m */; };
 		4DB036FC1B0BB3F600FDB44B /* CDTIS_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB036FB1B0BB3F600FDB44B /* CDTIS_iOSTests.m */; };
 		4DB037201B0BB41800FDB44B /* CDTIS_OSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB0371F1B0BB41800FDB44B /* CDTIS_OSXTests.m */; };
 		4DB037291B0BBAAB00FDB44B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DB036FA1B0BB3F600FDB44B /* Info.plist */; };
@@ -34,7 +40,6 @@
 /* Begin PBXFileReference section */
 		3250D3390F71F0DE6255E891 /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 		49AF3D303EC141EE559B081C /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		4D88452B1B0BC921009431EC /* Remote.xcdatamodeld */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodeld; path = Remote.xcdatamodeld; sourceTree = "<group>"; };
 		4D8845321B0BC96C009431EC /* Local.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Local.xcdatamodel; sourceTree = "<group>"; };
 		4D8845411B0BCD41009431EC /* Local.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Local.h; sourceTree = "<group>"; };
 		4D8845421B0BCD94009431EC /* Local.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Local.m; sourceTree = "<group>"; };
@@ -43,6 +48,12 @@
 		4D88454C1B0CE5D5009431EC /* LocalSortDescriptors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalSortDescriptors.m; sourceTree = "<group>"; };
 		4D88454F1B0CE695009431EC /* LocalFetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFetch.m; sourceTree = "<group>"; };
 		4D8845521B0CE79D009431EC /* LocalPredicates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalPredicates.m; sourceTree = "<group>"; };
+		4D8845551B0CF170009431EC /* Remote.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Remote.h; sourceTree = "<group>"; };
+		4D8845581B0CF2D6009431EC /* Remote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Remote.m; sourceTree = "<group>"; };
+		4D8845631B0CF7BC009431EC /* RemoteV1.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RemoteV1.0.xcdatamodel; sourceTree = "<group>"; };
+		4D8845641B0CF7BC009431EC /* RemoteV1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RemoteV1.1.xcdatamodel; sourceTree = "<group>"; };
+		4D8845671B0D02D1009431EC /* RemotePushPull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemotePushPull.m; sourceTree = "<group>"; };
+		4D8845691B0D09B1009431EC /* RemoteConflict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteConflict.m; sourceTree = "<group>"; };
 		4DB036F51B0BB3F600FDB44B /* CDTIS_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CDTIS_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB036FA1B0BB3F600FDB44B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DB036FB1B0BB3F600FDB44B /* CDTIS_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDTIS_iOSTests.m; sourceTree = "<group>"; };
@@ -85,6 +96,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4D8845561B0CF23E009431EC /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				4D8845311B0BC96C009431EC /* Local.xcdatamodeld */,
+				4D8845411B0BCD41009431EC /* Local.h */,
+				4D8845421B0BCD94009431EC /* Local.m */,
+				4D8845451B0BCF2F009431EC /* LocalJSON.m */,
+				4D8845491B0CE3F9009431EC /* LocalBatch.m */,
+				4D88454C1B0CE5D5009431EC /* LocalSortDescriptors.m */,
+				4D88454F1B0CE695009431EC /* LocalFetch.m */,
+				4D8845521B0CE79D009431EC /* LocalPredicates.m */,
+			);
+			name = Local;
+			sourceTree = "<group>";
+		};
+		4D8845571B0CF24C009431EC /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				4D8845621B0CF7BC009431EC /* Remote.xcdatamodeld */,
+				4D8845551B0CF170009431EC /* Remote.h */,
+				4D8845581B0CF2D6009431EC /* Remote.m */,
+				4D8845671B0D02D1009431EC /* RemotePushPull.m */,
+				4D8845691B0D09B1009431EC /* RemoteConflict.m */,
+			);
+			name = Remote;
+			sourceTree = "<group>";
+		};
 		4DB036D11B0BB36D00FDB44B = {
 			isa = PBXGroup;
 			children = (
@@ -123,15 +161,8 @@
 		4DB037271B0BB7C100FDB44B /* CDTIS_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4D8845311B0BC96C009431EC /* Local.xcdatamodeld */,
-				4D8845411B0BCD41009431EC /* Local.h */,
-				4D8845421B0BCD94009431EC /* Local.m */,
-				4D8845451B0BCF2F009431EC /* LocalJSON.m */,
-				4D8845491B0CE3F9009431EC /* LocalBatch.m */,
-				4D88454C1B0CE5D5009431EC /* LocalSortDescriptors.m */,
-				4D88454F1B0CE695009431EC /* LocalFetch.m */,
-				4D8845521B0CE79D009431EC /* LocalPredicates.m */,
-				4D88452B1B0BC921009431EC /* Remote.xcdatamodeld */,
+				4D8845561B0CF23E009431EC /* Local */,
+				4D8845571B0CF24C009431EC /* Remote */,
 				4DB037281B0BBA7100FDB44B /* Supporting Files */,
 				4DB036F81B0BB3F600FDB44B /* CDTIS_iOSTests */,
 				4DB0371C1B0BB41800FDB44B /* CDTIS_OSXTests */,
@@ -320,12 +351,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D88454A1B0CE3F9009431EC /* LocalBatch.m in Sources */,
+				4D8845651B0CF7BC009431EC /* Remote.xcdatamodeld in Sources */,
 				4D8845431B0BCD94009431EC /* Local.m in Sources */,
 				4D8845331B0BC96C009431EC /* Local.xcdatamodeld in Sources */,
+				4D8845681B0D02D1009431EC /* RemotePushPull.m in Sources */,
 				4DB036FC1B0BB3F600FDB44B /* CDTIS_iOSTests.m in Sources */,
 				4D8845501B0CE695009431EC /* LocalFetch.m in Sources */,
+				4D8845591B0CF2D6009431EC /* Remote.m in Sources */,
 				4D8845531B0CE79D009431EC /* LocalPredicates.m in Sources */,
-				4D88452C1B0BC921009431EC /* Remote.xcdatamodeld in Sources */,
+				4D88456A1B0D09B1009431EC /* RemoteConflict.m in Sources */,
 				4D8845461B0BCF2F009431EC /* LocalJSON.m in Sources */,
 				4D88454D1B0CE5D5009431EC /* LocalSortDescriptors.m in Sources */,
 			);
@@ -336,12 +370,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D88454B1B0CE3F9009431EC /* LocalBatch.m in Sources */,
+				4D8845661B0CF7BC009431EC /* Remote.xcdatamodeld in Sources */,
 				4D8845441B0BCD94009431EC /* Local.m in Sources */,
 				4D8845341B0BC96C009431EC /* Local.xcdatamodeld in Sources */,
 				4DB037201B0BB41800FDB44B /* CDTIS_OSXTests.m in Sources */,
 				4D8845511B0CE695009431EC /* LocalFetch.m in Sources */,
+				4D88455A1B0CF2D6009431EC /* Remote.m in Sources */,
+				4D88456B1B0D09B1009431EC /* RemoteConflict.m in Sources */,
+				4D88456C1B0D0AFF009431EC /* RemotePushPull.m in Sources */,
 				4D8845541B0CE79D009431EC /* LocalPredicates.m in Sources */,
-				4D88452D1B0BC921009431EC /* Remote.xcdatamodeld in Sources */,
 				4D8845471B0BCF2F009431EC /* LocalJSON.m in Sources */,
 				4D88454E1B0CE5D5009431EC /* LocalSortDescriptors.m in Sources */,
 			);
@@ -591,6 +628,17 @@
 			);
 			currentVersion = 4D8845321B0BC96C009431EC /* Local.xcdatamodel */;
 			path = Local.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		4D8845621B0CF7BC009431EC /* Remote.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4D8845631B0CF7BC009431EC /* RemoteV1.0.xcdatamodel */,
+				4D8845641B0CF7BC009431EC /* RemoteV1.1.xcdatamodel */,
+			);
+			currentVersion = 4D8845641B0CF7BC009431EC /* RemoteV1.1.xcdatamodel */;
+			path = Remote.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

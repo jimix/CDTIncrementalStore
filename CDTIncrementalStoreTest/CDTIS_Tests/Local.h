@@ -29,17 +29,17 @@
 
 @interface Entry : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * check;
-@property (nonatomic, retain) NSDate * created_at;
-@property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSString * text2;
-@property (nonatomic, retain) NSNumber * i16;
-@property (nonatomic, retain) NSNumber * i32;
-@property (nonatomic, retain) NSNumber * i64;
-@property (nonatomic, retain) NSDecimalNumber * fpDecimal;
-@property (nonatomic, retain) NSNumber * fpDouble;
-@property (nonatomic, retain) NSNumber * fpFloat;
-@property (nonatomic, retain) NSData * binary;
+@property (nonatomic, retain) NSNumber *check;
+@property (nonatomic, retain) NSDate *created_at;
+@property (nonatomic, retain) NSString *text;
+@property (nonatomic, retain) NSString *text2;
+@property (nonatomic, retain) NSNumber *i16;
+@property (nonatomic, retain) NSNumber *i32;
+@property (nonatomic, retain) NSNumber *i64;
+@property (nonatomic, retain) NSDecimalNumber *fpDecimal;
+@property (nonatomic, retain) NSNumber *fpDouble;
+@property (nonatomic, retain) NSNumber *fpFloat;
+@property (nonatomic, retain) NSData *binary;
 @property (nonatomic, retain) id xform;
 @property (nonatomic, retain) NSSet *subEntries;
 @property (nonatomic, retain) NSSet *files;
@@ -63,8 +63,8 @@ Entry *MakeEntry(NSManagedObjectContext *moc);
 
 @interface File : NSManagedObject
 
-@property (nonatomic, retain) NSString * fileName;
-@property (nonatomic, retain) NSData * data;
+@property (nonatomic, retain) NSString *fileName;
+@property (nonatomic, retain) NSData *data;
 @property (nonatomic, retain) NSManagedObject *entry;
 
 @end
