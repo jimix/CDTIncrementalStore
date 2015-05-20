@@ -13,7 +13,6 @@
 
 #import "CDTISReplicator.h"
 
-
 extern NSString *const CDTISErrorDomain;
 extern NSString *const CDTISException;
 
@@ -28,6 +27,12 @@ extern NSString *const CDTISException;
 
 #endif
 
+
+/**
+ * CDTIncrementalStore is an abstract superclass defining the API through which 
+ * an application can use CDTDatastore as a persistent store for a Core Data 
+ * application.
+ */
 @interface CDTIncrementalStore : NSIncrementalStore
 
 /**
@@ -85,6 +90,9 @@ typedef NS_ENUM(NSInteger, CDTIncrementalStoreErrors) {
                              withContext:(NSManagedObjectContext *)context
                               versionPtr:(uint64_t *)version;
 
+/**
+ *  Internal
+ */
 - (NSManagedObject *)managedObjectForEntityName:(NSString *)name
                                 referenceObject:(NSString *)ref
                                         context:(NSManagedObjectContext *)context;

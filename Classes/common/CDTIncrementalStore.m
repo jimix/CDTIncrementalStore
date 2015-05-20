@@ -18,6 +18,9 @@
 #import "CDTISGraphviz.h"
 
 #ifdef HAS_NSBatchUpdateRequest
+/**
+ *  Currently NSBatchUpdateResult does not supply setters, so we have to.
+ */
 @implementation NSBatchUpdateResult
 - (void)setResultType:(NSBatchUpdateRequestResultType)resultType { _resultType = resultType; }
 - (void)setResult:(id)result { _result = result; }
@@ -186,6 +189,14 @@ static NSString *uniqueID(NSString *label)
     return ref;
 }
 
+/**
+ *  Checks to see if the entity hashes match
+ *
+ *  @param entity   The entity you want to compare
+ *  @param metadata Metadata for the store
+ *
+ *  @return YES on success, FALSE on failure
+ */
 static BOOL badEntityVersion(NSEntityDescription *entity, NSDictionary *metadata)
 {
     if (!CDTISCheckEntityVersions) return NO;
@@ -199,6 +210,14 @@ static BOOL badEntityVersion(NSEntityDescription *entity, NSDictionary *metadata
     return YES;
 }
 
+/**
+ *  Checks to see if an object ID matches the metadata.
+ *
+ *  @param moid     Object ID
+ *  @param metadata Metadata fot he store
+ *
+ *  @return YES on success, FALSE on failure
+ */
 static BOOL badObjectVersion(NSManagedObjectID *moid, NSDictionary *metadata)
 {
     if (!CDTISCheckEntityVersions) return NO;
@@ -232,6 +251,13 @@ static BOOL badObjectVersion(NSManagedObjectID *moid, NSDictionary *metadata)
     return xform;
 }
 
+/**
+ *  used for logging so we don't leach out the developer keys
+ *
+ *  @param url URL
+ *
+ *  @return Clean URL String
+ */
 - (NSString *)cleanURL:(NSURL *)url
 {
     return
@@ -240,6 +266,16 @@ static BOOL badObjectVersion(NSManagedObjectID *moid, NSDictionary *metadata)
 
 #pragma mark - property encode
 
+/**
+ *  Insert an NSData binary object into the "blob" store
+ *
+ *  @param blob  nbinary data
+ *  @param name  key
+ *  @param store blob store
+ *  @param mt    Mime Type if known
+ *
+ *  @return <#return value description#>
+ */
 - (NSString *)encodeBlob:(NSData *)blob
                 withName:(NSString *)name
                  inStore:(NSMutableDictionary *)store
@@ -602,6 +638,14 @@ static BOOL badObjectVersion(NSManagedObjectID *moid, NSDictionary *metadata)
     return moid;
 }
 
+/**
+ *  Extract the binary object for the "blob" store
+ *
+ *  @param name  Key
+ *  @param store blob store
+ *
+ *  @return Binary data
+ */
 - (NSData *)decodeBlob:(NSString *)name fromStore:(NSDictionary *)store
 {
     CDTSavedAttachment *att = store[name];
