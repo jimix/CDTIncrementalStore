@@ -17,12 +17,9 @@ static const BOOL sql = NO;
 
 @end
 
-
 @implementation LocalJSON
 
-- (void)setUp {
-    [super setUpForSQL:sql];
-}
+- (void)setUp { [super setUpForSQL:sql]; }
 
 - (void)testCheckNumbers
 {
@@ -50,7 +47,7 @@ static const BOOL sql = NO;
     minNums.text = @"minimums";
     minNums.check = @NO;
     minNums.fpDecimal = [NSDecimalNumber minimumDecimalNumber];
-    minNums.fpDouble = @(DBL_MIN);
+    minNums.fpDouble = [NSNumber numberWithDouble:DBL_MIN];
     minNums.fpFloat = @(FLT_MIN);
     minNums.i16 = @INT16_MIN;
     minNums.i32 = @INT32_MIN;
@@ -85,7 +82,8 @@ static const BOOL sql = NO;
     [moc refreshObject:infNums mergeChanges:NO];
     [moc refreshObject:nanNums mergeChanges:NO];
 
-    XCTAssertTrue([maxNums.fpDouble isEqualToNumber:@(DBL_MAX)], @"Failed to retain double max");
+    XCTAssertTrue([maxNums.fpDouble isEqualToNumber:@(DBL_MAX)],
+                  @"Failed to retain double max, %@ != %@", maxNums.fpDouble, @(DBL_MAX));
     XCTAssertTrue([minNums.fpDouble isEqualToNumber:@(DBL_MIN)], @"Failed to retain double min");
     XCTAssertTrue([infNums.fpDouble isEqualToNumber:@(INFINITY)],
                   @"Failed to retain double infinity");
@@ -108,7 +106,7 @@ static const BOOL sql = NO;
         XCTAssertTrue([minNums.fpDecimal isEqual:[NSDecimalNumber minimumDecimalNumber]],
                       @"Failed to retain decimal min");
         XCTAssertTrue([infNums.fpDecimal
-                       isEqual:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:INFINITY]],
+                          isEqual:(NSDecimalNumber *)[NSDecimalNumber numberWithDouble:INFINITY]],
                       @"Failed to retain decimal infinity");
     }
 

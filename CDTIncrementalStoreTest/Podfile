@@ -4,6 +4,8 @@ xcodeproj 'CDTIncrementalStoreTest'
 
 def import_pods
   pod "CDTIncrementalStore", :path => "../"
+  # We use this so it builds for OSX
+  pod "Unirest", :git => 'https://github.com/mikerhodes/unirest-obj-c.git'
 end
 
 target :ios do

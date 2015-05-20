@@ -9,11 +9,24 @@
 #import <CoreData/CoreData.h>
 #import <CloudantSync.h>
 
+#include <Availability.h>
+
 #import "CDTISReplicator.h"
 
 
 extern NSString *const CDTISErrorDomain;
 extern NSString *const CDTISException;
+
+/**
+ * Feature Tests
+ */
+
+#if (__MAC_OS_X_VERSION_MAX_ALLOWED >= 101000) || (__IPHONE_OS_VERSION_MAX_ALLOWED >= 80100)
+
+#define HAS_NSAsynchronousFetchRequest 1
+#define HAS_NSBatchUpdateRequest 1
+
+#endif
 
 @interface CDTIncrementalStore : NSIncrementalStore
 

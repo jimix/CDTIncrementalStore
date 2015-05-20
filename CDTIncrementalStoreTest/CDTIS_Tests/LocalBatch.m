@@ -11,6 +11,8 @@
 
 #import "Local.h"
 
+#ifdef HAS_NSBatchUpdateRequest
+
 @interface LocalBatch : LocalTestCase
 
 @end
@@ -20,6 +22,11 @@
 
 - (void)testBatchUpdates
 {
+    Class MyBURequest = NSClassFromString(@"NSBatchUpdateRequest");
+    if (!MyBURequest) {
+        return;
+    }
+
     int num_entries = 100;
     const double TIME_PRECISION = 0.000001;  // one microsecond
 
@@ -73,7 +80,7 @@
      *  Batch update all objects 50 or higher (should remove 25 checks)
      */
     {
-        NSBatchUpdateRequest *req = [[NSBatchUpdateRequest alloc] initWithEntityName:@"Entry"];
+        NSBatchUpdateRequest *req = [[MyBURequest alloc] initWithEntityName:@"Entry"];
         req.predicate = [NSPredicate predicateWithFormat:@"i64>=%d", num_entries / 2];
         req.propertiesToUpdate = @{ @"check" : @(NO) };
         req.resultType = NSUpdatedObjectsCountResultType;
@@ -98,7 +105,7 @@
      *  Request objectIDs to be returned
      */
     {
-        NSBatchUpdateRequest *req = [[NSBatchUpdateRequest alloc] initWithEntityName:@"Entry"];
+        NSBatchUpdateRequest *req = [[MyBURequest alloc] initWithEntityName:@"Entry"];
         req.predicate = [NSPredicate predicateWithFormat:@"check == YES"];
         req.propertiesToUpdate = @{
                                    @"created_at" : now,
@@ -145,7 +152,7 @@
      *  Batch update error case: update specifies field not in managed object
      */
     {
-        NSBatchUpdateRequest *req = [[NSBatchUpdateRequest alloc] initWithEntityName:@"Entry"];
+        NSBatchUpdateRequest *req = [[MyBURequest alloc] initWithEntityName:@"Entry"];
         req.predicate = [NSPredicate predicateWithFormat:@"i64>=%d", num_entries / 2];
         req.propertiesToUpdate = @{ @"foobar" : @(NO) };
         req.resultType = NSUpdatedObjectsCountResultType;
@@ -155,5 +162,5 @@
     }
 }
 
-
 @end
+#endif // NSBatchUpdateRequest

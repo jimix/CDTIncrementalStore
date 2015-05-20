@@ -17,10 +17,12 @@
 #import "CDTISObjectModel.h"
 #import "CDTISGraphviz.h"
 
+#ifdef HAS_NSBatchUpdateRequest
 @implementation NSBatchUpdateResult
 - (void)setResultType:(NSBatchUpdateRequestResultType)resultType { _resultType = resultType; }
 - (void)setResult:(id)result { _result = result; }
 @end
+#endif
 
 #pragma mark - properties
 @interface CDTIncrementalStore ()
@@ -99,10 +101,12 @@ static BOOL CDTISCheckEntityVersions = NO;
  */
 static BOOL CDTISCheckForSubEntities = NO;
 
+#ifdef HAS_NSBatchUpdateRequest
 /**
  *	Support batch update requests.
  */
 static BOOL CDTISSupportBatchUpdates = YES;
+#endif
 
 @implementation CDTIncrementalStore
 
@@ -374,9 +378,10 @@ static BOOL badObjectVersion(NSManagedObjectID *moid, NSDictionary *metadata)
         case NSDoubleAttributeType: {
             NSNumber *num = value;
             double dbl = [num doubleValue];
-            NSNumber *i64 = @(*(int64_t *)&dbl);
+            int64_t i64 = *(int64_t *)&dbl;
+            NSNumber *n64 = [NSNumber numberWithLongLong:i64];
             NSMutableDictionary *meta = [NSMutableDictionary dictionary];
-            meta[CDTISDoubleImageKey] = i64;
+            meta[CDTISDoubleImageKey] = n64;
 
             if ([num isEqual:@(INFINITY)]) {
                 num = @(DBL_MAX);
@@ -1908,6 +1913,7 @@ NSString *kNorOperator = @"$nor";
     return @[];
 }
 
+#ifdef HAS_NSBatchUpdateRequest
 - (NSBatchUpdateResult *)executeBatchUpdateRequest:(NSBatchUpdateRequest *)updateRequest
                                              error:(NSError **)error
 {
@@ -1988,6 +1994,7 @@ NSString *kNorOperator = @"$nor";
 
     return updateResult;
 }
+#endif // HAS_NSBatchUpdateRequest
 
 - (id)executeRequest:(NSPersistentStoreRequest *)request
          withContext:(NSManagedObjectContext *)context
@@ -2005,10 +2012,12 @@ NSString *kNorOperator = @"$nor";
         return [self executeSaveRequest:saveRequest withContext:context error:error];
     }
 
-    if (requestType == NSBatchUpdateRequestType && CDTISSupportBatchUpdates) {
+#ifdef HAS_NSBatchUpdateRequest
+    if (CDTISSupportBatchUpdates && requestType == NSBatchUpdateRequestType) {
         NSBatchUpdateRequest *updateRequest = (NSBatchUpdateRequest *)request;
         return [self executeBatchUpdateRequest:updateRequest error:error];
     }
+#endif
 
     NSString *s = [NSString localizedStringWithFormat:@"Unknown request type: %@", @(requestType)];
     if (error) {

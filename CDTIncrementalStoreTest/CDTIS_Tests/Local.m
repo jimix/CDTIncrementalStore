@@ -6,8 +6,6 @@
 //
 //
 
-#import <CDTIncrementalStore.h>
-
 #import "Local.h"
 
 static NSString *CDTISDBString = @"cdtis_test";
@@ -119,18 +117,11 @@ static NSString *CDTISDBString = @"cdtis_test";
 
 @dynamic check;
 @dynamic created_at;
-@dynamic text;
-@dynamic text2;
-@dynamic i16;
-@dynamic i32;
-@dynamic i64;
-@dynamic fpDecimal;
-@dynamic fpDouble;
-@dynamic fpFloat;
-@dynamic binary;
-@dynamic xform;
-@dynamic subEntries;
-@dynamic files;
+@dynamic text, text2;
+@dynamic i16, i32, i64;
+@dynamic fpDecimal, fpDouble, fpFloat;
+@dynamic binary, xform;
+@dynamic subEntries, files;
 
 @end
 
@@ -143,16 +134,12 @@ Entry *MakeEntry(NSManagedObjectContext *moc)
 
 @implementation File
 
-@dynamic fileName;
-@dynamic data;
-@dynamic entry;
+@dynamic fileName, data, entry;
 
 @end
 
 @implementation SubEntry
 
-@dynamic text;
-@dynamic number;
-@dynamic entry;
+@dynamic text, number, entry;
 
 @end

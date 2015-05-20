@@ -33,8 +33,14 @@ static void *ISContextProgress = &ISContextProgress;
     }
 }
 
+#ifdef HAS_NSAsynchronousFetchRequest
 - (void)testAsyncFetch
 {
+    Class MyAFRequest = NSClassFromString(@"NSAsynchronousFetchRequest");
+    if (!MyAFRequest) {
+        return;
+    }
+
     int max = 5000;
     NSUInteger __block completed = 0;
 
@@ -74,18 +80,18 @@ static void *ISContextProgress = &ISContextProgress;
     // this does not do anything, but maybe it will one day
     fr.fetchBatchSize = 10;
 
-    NSAsynchronousFetchRequest *asyncFetch = [[NSAsynchronousFetchRequest alloc]
-                                              initWithFetchRequest:fr
-                                              completionBlock:^(NSAsynchronousFetchResult *result) {
-                                                  NSLog(@"Final: %@", @(result.finalResult.count));
-                                                  [result.progress removeObserver:self
-                                                                       forKeyPath:@"completedUnitCount"
-                                                                          context:ISContextProgress];
-                                                  [result.progress removeObserver:self
-                                                                       forKeyPath:@"totalUnitCount"
-                                                                          context:ISContextProgress];
-                                                  completed = result.finalResult.count;
-                                              }];
+    NSAsynchronousFetchRequest *asyncFetch = [[MyAFRequest alloc]
+                                initWithFetchRequest:fr
+                                completionBlock:^(NSAsynchronousFetchResult *result) {
+                                    NSLog(@"Final: %@", @(result.finalResult.count));
+                                    [result.progress removeObserver:self
+                                                         forKeyPath:@"completedUnitCount"
+                                                            context:ISContextProgress];
+                                    [result.progress removeObserver:self
+                                                         forKeyPath:@"totalUnitCount"
+                                                            context:ISContextProgress];
+                                    completed = result.finalResult.count;
+                                }];
 
     [otherMOC performBlock:^{
         // Create Progress
@@ -122,6 +128,8 @@ static void *ISContextProgress = &ISContextProgress;
     }
     XCTAssertTrue(completed == max / 2, @"completed should be %@ is %@", @(completed), @(max));
 }
+
+#endif // HAS_NSAsynchronousFetchRequest
 
 - (void)testFetchConstraints
 {
