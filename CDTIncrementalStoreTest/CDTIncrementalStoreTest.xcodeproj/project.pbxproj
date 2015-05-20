@@ -44,7 +44,7 @@
 		4D88454F1B0CE695009431EC /* LocalFetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFetch.m; sourceTree = "<group>"; };
 		4D8845521B0CE79D009431EC /* LocalPredicates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalPredicates.m; sourceTree = "<group>"; };
 		4DB036F51B0BB3F600FDB44B /* CDTIS_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CDTIS_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DB036FA1B0BB3F600FDB44B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = CDTIS_Tests/Info.plist; sourceTree = "<group>"; };
+		4DB036FA1B0BB3F600FDB44B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DB036FB1B0BB3F600FDB44B /* CDTIS_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDTIS_iOSTests.m; sourceTree = "<group>"; };
 		4DB037191B0BB41800FDB44B /* CDTIS_OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CDTIS_OSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB0371F1B0BB41800FDB44B /* CDTIS_OSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDTIS_OSXTests.m; sourceTree = "<group>"; };
@@ -89,8 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				4DB037271B0BB7C100FDB44B /* CDTIS_Tests */,
-				4DB036F81B0BB3F600FDB44B /* CDTIS_iOSTests */,
-				4DB0371C1B0BB41800FDB44B /* CDTIS_OSXTests */,
 				4DB036DD1B0BB3F600FDB44B /* Products */,
 				1E5CB6441868CF1EBDA386F1 /* Pods */,
 				9567EC9B28A8EE7D07A56056 /* Frameworks */,
@@ -135,6 +133,8 @@
 				4D8845521B0CE79D009431EC /* LocalPredicates.m */,
 				4D88452B1B0BC921009431EC /* Remote.xcdatamodeld */,
 				4DB037281B0BBA7100FDB44B /* Supporting Files */,
+				4DB036F81B0BB3F600FDB44B /* CDTIS_iOSTests */,
+				4DB0371C1B0BB41800FDB44B /* CDTIS_OSXTests */,
 			);
 			path = CDTIS_Tests;
 			sourceTree = "<group>";
@@ -145,7 +145,6 @@
 				4DB036FA1B0BB3F600FDB44B /* Info.plist */,
 			);
 			name = "Supporting Files";
-			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		9567EC9B28A8EE7D07A56056 /* Frameworks */ = {
