@@ -1,5 +1,10 @@
 # CDTIncrementalStore
 
+[![Version](http://cocoapod-badges.herokuapp.com/v/CDTIncrementalStore/badge.png)](http://cocoadocs.org/docsets/CDTIncrementalStore)
+[![Platform](http://cocoapod-badges.herokuapp.com/p/CDTIncrementalStore/badge.png)](http://cocoadocs.org/docsets/CDTIncrementalStore)
+[![Build Status](https://travis-ci.org/jimix/CDTIncrementalStore.png?branch=master)](https://travis-ci.org/jimix/CDTIncremetalStore)
+
+
 **An application can use `CDTIncrementalStore` to target
 [Cloudant Sync] as a [persistent store] for a [Core Data] application.**
 
@@ -111,9 +116,9 @@ There is an example application based on
 ## Other Documents
 These can be found in the [docs](docs) directory.
 
-1. [Replication](docs/replication.md)
-1. [Portability](docs/portability.md)
-1. [Internals](docs/internals.md)
+1. [Replication](https://github.com/jimix/CDTIncrementalStore/docs/replication.md)
+1. [Portability](https://github.com/jimix/CDTIncrementalStore/docs/portability.md)
+1. [Internals](https://github.com/jimix/CDTIncrementalStore/docs/internals.md)
 
 <!-- refs -->
 
@@ -131,7 +136,7 @@ These can be found in the [docs](docs) directory.
 
 [recipe]: https://developer.apple.com/library/ios/samplecode/iPhoneCoreDataRecipes/Introduction/Intro.html "iPhoneCoreDataRecipes"
 
-[gitrecipe]: https://git.ibmbaas.com/jimix/iphonecoredatarecipes "Git Tree of iPhoneCoreDataRecipes"
+[gitrecipe]: http://github.com/jimix/iphonecoredatarecipes "Git Tree of iPhoneCoreDataRecipes"
 
 
 <!--  LocalWords:  CDTIncrementalStore Cloudant CDTDatastore Podfile

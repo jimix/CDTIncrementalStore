@@ -1,0 +1,14 @@
+
+language: objective-c
+
+before_install:
+  - export LANG=en_US.UTF-8
+
+install:
+  - gem install cocoapods xcpretty --no-document
+  - cd CDTIncrementalStoreTest
+  - pod install
+  - cd ..
+
+script:
+  - rake travis

@@ -14,7 +14,7 @@ EOT
 
 Pod::Spec.new do |s|
   s.name         = "CDTIncrementalStore"
-  s.version      = "0.1.0"
+  s.version      = "0.0.1"
   s.summary      = "CDTIncrementalStore allows Core Data Frameworks to target CDTDatastore."
   s.description  = <<-DESC
                     CDTIncreamentalStore provides an Incremental Store
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.homepage     = "http://github.com/jimix/CDTIncrementalStore"
   s.license      = {:type => 'Apache', :text => license}
   s.author       = { "IBM, Inc." => "jimix@pobox.com" }
-  s.source       = { :git => "https://github.com/jimix/CDTIncrementalStore", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/jimix/CDTIncrementalStore.git", :tag => s.version.to_s }
 
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.8'
