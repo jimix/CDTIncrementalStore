@@ -1,0 +1,27 @@
+language: objective-c
+xcode_workspace: CDTIncrementalStoreTest/CDTIncrementalStoreTest.xcworkspace
+
+# This has probles with the DBL_MAX test, disable until we have it
+#   - CDTIS_SCHEME=CDTIS_OSXTests CDTIS_SDK=macosx10.9 CDTIS_DEST='-destination platform="OS X"' CDTIS_TARGETS="test"
+
+env:
+  matrix:
+   - CDTIS_SCHEME=CDTIS_iOSTests CDTIS_SDK=iphonesimulator7.1 CDTIS_DEST='-destination name="iPhone 4s"' CDTIS_TARGETS="test"
+   - CDTIS_SCHEME=CDTIS_iOSTests CDTIS_SDK=iphonesimulator8.1 CDTIS_DEST='-destination name="iPhone 4s"' CDTIS_TARGETS="test"
+   - CDTIS_SCHEME=CDTIS_iOSTests CDTIS_SDK=iphonesimulator8.1 CDTIS_DEST='-destination name="iPhone 6"' CDTIS_TARGETS="test"
+   - CDTIS_SCHEME=CDTIS_OSXTests CDTIS_SDK=macosx10.10 CDTIS_DEST='-destination platform="OS X"' CDTIS_TARGETS="test"
+   - CDTIS_SCHEME=CDTIS_OSXTests CDTIS_SDK=macosx10.10 CDTIS_DEST='-destination platform="OS X",OS=10.9' CDTIS_TARGETS="test"
+
+podfile: CDTIncrementalStoreTest/Podfile
+
+before_install:
+  - export LANG=en_US.UTF-8
+  - brew install couchdb
+  - launchctl load /usr/local/opt/couchdb/homebrew.mxcl.couchdb.plist
+
+before_script:
+  - curl http://127.0.0.1:5984/
+
+script:
+  - xctool -workspace CDTIncrementalStoreTest/CDTIncrementalStoreTest.xcworkspace -scheme "$CDTIS_SCHEME" -sdk "$CDTIS_SDK" "$CDTIS_DEST" $CDTIS_TARGETS
+
