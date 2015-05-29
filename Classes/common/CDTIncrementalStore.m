@@ -104,12 +104,10 @@ static BOOL CDTISCheckEntityVersions = NO;
  */
 static BOOL CDTISCheckForSubEntities = NO;
 
-#ifdef HAS_NSBatchUpdateRequest
 /**
  *	Support batch update requests.
  */
 static BOOL CDTISSupportBatchUpdates = YES;
-#endif
 
 @implementation CDTIncrementalStore
 
@@ -126,6 +124,10 @@ static BOOL CDTISSupportBatchUpdates = YES;
     }
 
     [NSPersistentStoreCoordinator registerStoreClass:self forStoreType:[self type]];
+
+    if (!NSClassFromString(@"NSBatchUpdateRequest")) {
+        CDTISSupportBatchUpdates = NO;
+    }
 
     /**
      *  We post to:
@@ -414,8 +416,8 @@ static BOOL badObjectVersion(NSManagedObjectID *moid, NSDictionary *metadata)
         case NSDoubleAttributeType: {
             NSNumber *num = value;
             double dbl = [num doubleValue];
-            int64_t i64 = *(int64_t *)&dbl;
-            NSNumber *n64 = [NSNumber numberWithLongLong:i64];
+            uint64_t u64 = *(uint64_t *)&dbl;
+            NSNumber *n64 = [NSNumber numberWithUnsignedLongLong:u64];
             NSMutableDictionary *meta = [NSMutableDictionary dictionary];
             meta[CDTISDoubleImageKey] = n64;
 
@@ -719,9 +721,12 @@ static BOOL badObjectVersion(NSManagedObjectID *moid, NSDictionary *metadata)
         } break;
         case NSDoubleAttributeType: {
             // just get the image
-            NSNumber *i64Num = meta[CDTISDoubleImageKey];
-            int64_t i64 = [i64Num longLongValue];
-            NSNumber *num = @(*(double *)&i64);
+            NSNumber *n64 = meta[CDTISDoubleImageKey];
+            // 10.9 [n64 unsignedLongLongValue] has a bug and returns wrong value
+            NSString *s64 = [n64 description];
+            uint64_t u64 = strtoull([s64 UTF8String], NULL, 0xa);
+            double dbl = *(double *)&u64;
+            NSNumber *num = [NSNumber numberWithDouble:dbl];
             value = num;
         } break;
         case NSFloatAttributeType: {
