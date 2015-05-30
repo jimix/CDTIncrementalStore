@@ -85,7 +85,7 @@ be saved in the local `CDTDatastore` image.
 
 ## Supported Features
 
-The [Cloudant] persistent store for [Core Data] supports the following features:
+The [Cloudant Sync] persistent store for [Core Data] supports the following features:
 
 - Save, fetch, update, and delete of Managed Objects to the on-device CDTDatastore.
 - Batch update requests
@@ -110,9 +110,9 @@ There is an example application based on
 ## Other Documents
 These can be found in the [docs](docs) directory.
 
-1. [Replication](https://github.com/jimix/CDTIncrementalStore/docs/replication.md)
-1. [Portability](https://github.com/jimix/CDTIncrementalStore/docs/portability.md)
-1. [Internals](https://github.com/jimix/CDTIncrementalStore/docs/internals.md)
+1. [Replication](docs/replication.md)
+1. [Portability](docs/portability.md)
+1. [Internals](docs/internals.md)
 
 <!-- refs -->
 
