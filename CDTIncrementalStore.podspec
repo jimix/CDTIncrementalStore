@@ -14,7 +14,7 @@ EOT
 
 Pod::Spec.new do |s|
   s.name         = "CDTIncrementalStore"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "CDTIncrementalStore allows Core Data Frameworks to target CDTDatastore."
   s.description  = <<-DESC
                     CDTIncreamentalStore provides an Incremental Store
