@@ -7,7 +7,7 @@
 //
 
 #import <CoreData/CoreData.h>
-#import <CloudantSync.h>
+#import <CDTDatastore/CloudantSync.h>
 
 #include <Availability.h>
 

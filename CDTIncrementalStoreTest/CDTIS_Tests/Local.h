@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import <XCTest/XCTest.h>
 
-#import <CDTIncrementalStore.h>
+#import <CDTIncrementalStore/CDTIncrementalStore.h>
 
 @interface LocalTestCase : XCTestCase
 

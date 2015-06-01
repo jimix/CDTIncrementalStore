@@ -2,10 +2,16 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 xcodeproj 'CDTIncrementalStoreTest'
 
+use_frameworks!
+
 def import_pods
+  pod 'CDTDatastore', :path => '/Users/jimix/work/iOS/CoreData/CDTDatastore'
   pod "CDTIncrementalStore", :path => "../"
   # We use this so it builds for OSX
-  pod "Unirest", :git => 'https://github.com/mikerhodes/unirest-obj-c.git'
+  # pod "Unirest", :git => 'https://github.com/mikerhodes/unirest-obj-c.git'
+  # We use this instead because it has fixes for frameworks
+  # pod "Unirest", :git => 'https://github.com/jimix/unirest-obj-c.git'
+  pod "Unirest", :path => '/Users/jimix/work/iOS/CoreData/unirest/unirest-obj-c'
 end
 
 target :ios do

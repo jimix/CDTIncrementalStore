@@ -34,10 +34,14 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Classes/{common, ios, osx}/*.{h,m}'
+  s.public_header_files = 'Classes/{common, ios, osx}/*.{h}'
 
   s.ios.exclude_files = 'Classes/osx'
   s.osx.exclude_files = 'Classes/ios'
 
   s.dependency 'CDTDatastore', '~> 0.16.0'
+# CDTDatastore depends on this as well but breaks frameworks
+  s.dependency 'CocoaLumberjack'
+
   s.frameworks =  'CoreData'
 end
