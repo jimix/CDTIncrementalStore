@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>CDTIncrementalStore by jimix</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>CDTIncrementalStore</h1>
+        <h2>CDTIncrementalStore allows Core Data Frameworks to target CDTDatastore</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/jimix/CDTIncrementalStore/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/jimix/CDTIncrementalStore/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/jimix/CDTIncrementalStore" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="cdtincrementalstore" class="anchor" href="#cdtincrementalstore" aria-hidden="true"><span class="octicon octicon-link"></span></a>CDTIncrementalStore</h1>
+
+<p><a href="http://cocoadocs.org/docsets/CDTIncrementalStore"><img src="http://cocoapod-badges.herokuapp.com/v/CDTIncrementalStore/badge.png" alt="Version"></a>
+<a href="http://cocoadocs.org/docsets/CDTIncrementalStore"><img src="http://cocoapod-badges.herokuapp.com/p/CDTIncrementalStore/badge.png" alt="Platform"></a>
+<a href="https://travis-ci.org/jimix/CDTIncremetalStore"><img src="https://travis-ci.org/jimix/CDTIncrementalStore.png?branch=master" alt="Build Status"></a></p>
+
+<p><strong>An application can use <code>CDTIncrementalStore</code> to target
+<a href="https://github.com/cloudant/CDTDatastore" title="Cloudant Sync iOS datastore library">Cloudant Sync</a> as a <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/Articles/cdPersistentStores.html" title="Persistent Store Features">persistent store</a> for a <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html" title="Introduction to Core Data Programming Guide">Core Data</a> application.</strong></p>
+
+<blockquote>
+<p><strong><em>Warning</em></strong>: This document assumes you are familiar with <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html" title="Introduction to Core Data Programming Guide">Core Data</a>.</p>
+</blockquote>
+
+<p>From the <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html" title="Introduction to Core Data Programming Guide">Apple documents</a>:</p>
+
+<blockquote>
+<p>The Core Data framework provides generalized and automated
+ solutions to common tasks associated with object life-cycle and
+ object graph management, including persistence.</p>
+</blockquote>
+
+<p>It is this <em>"persistence"</em>, which is provided by the
+<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/Articles/cdPersistentStores.html" title="Persistent Store Features">Persistent Store</a>, that we wish to add <code>CDTDatastore</code> as a backing
+store. The <a href="https://developer.apple.com/library/mac/documentation/DataManagement/Conceptual/IncrementalStorePG/Introduction/Introduction.html" title="About Incremental Stores">Incremental Store</a> provides the hooks necessary to do
+this.</p>
+
+<p>Thankfully, the user does not need to know these details to exploit
+<code>CDTIncrementalStore</code> from an application that uses <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html" title="Introduction to Core Data Programming Guide">Core Data</a>.</p>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting started</h2>
+
+<p><code>CDTIncrementalStore</code> is available through <a href="http://cocoapods.org" title="Cocoa Pods">CocoaPods</a>, to install it
+add the following line to your <code>Podfile</code>:</p>
+
+<div class="highlight highlight-ruby"><pre>pod <span class="pl-s"><span class="pl-pds">"</span>CDTIncrementalStore<span class="pl-pds">"</span></span></pre></div>
+
+<h3>
+<a id="using-in-a-swift-app" class="anchor" href="#using-in-a-swift-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using in a Swift app</h3>
+
+<p><code>CDTIncremetalStore</code> uses <code>CDTDatastore</code> and both are usable from
+Swift out of the box with a few small quirks. Install as per the
+instructions above, and import <code>CDTIncrementalStore.h</code> into your
+<a href="https://developer.apple.com/library/ios/documentation/swift/conceptual/buildingcocoaapps/MixandMatch.html" title="Bridging Headers">bridging header</a>.</p>
+
+<blockquote>
+<p><strong><em>Note</em></strong>: There may be additional Swift considerations when using
+the CDTDatastore directly, please see <a href="https://github.com/cloudant/CDTDatastore" title="Cloudant Sync iOS datastore library">cloudant sync</a> documentation.</p>
+</blockquote>
+
+<h2>
+<a id="core-data" class="anchor" href="#core-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Core Data</h2>
+
+<p>If your application is not already using Core Data, see the
+<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html" title="Introduction to Core Data Programming Guide">Core Data</a> documentation for the proper setup for a persistent store.
+This generally involves the initialization of a persistent store
+coordinator followed by a request to add a persistent store of a
+specific type to the persistent store coordinator.</p>
+
+<p>This setup is commonly done in the application delegate, but could be
+done elsewhere.  The common persistent store implementation is the
+<code>NSSQLiteStoreType</code>, which uses [SQLite] for persistent storage.  To use
+<code>CDTDatastore</code> for <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html" title="Introduction to Core Data Programming Guide">Core Data</a> persistent storage, specify
+<code>[CDTIncrementalStore type]</code> as the persistent store type, as follows:</p>
+
+<div class="highlight highlight-objc"><pre>#<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">&lt;</span>CDTIncrementalStore.h<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-c1">NSURL</span> *storeURL = [docsDir <span class="pl-c1">URLByAppendingPathComponent:</span><span class="pl-s"><span class="pl-pds">@"</span>mystore<span class="pl-pds">"</span></span>];
+<span class="pl-c1">NSString</span> *myType = [CDTIncrementalStore <span class="pl-c1">type</span>];
+NSPersistentStoreCoordinator *psc = ...
+[psc <span class="pl-c1">addPersistentStoreWithType:</span>myType
+                  <span class="pl-c1">configuration:</span><span class="pl-c1">nil</span>
+                            <span class="pl-c1">URL:</span>storeURL
+                        <span class="pl-c1">options:</span><span class="pl-c1">nil</span>
+                          <span class="pl-c1">error:</span>&amp;error])];</pre></div>
+
+<p>CDTIncrementalStore will use the last component of the storeURL as the
+name of the database.  This name must follow the Cloudant conventions,
+including containing only lowercase alpha, numeric, and underscore
+characters.  Do not specify a suffix, e.g. <code>".sqlite"</code>, as this is
+also not allowed.  If the storeURL has a host component, then it is
+also used as the remote database target of push, pull and sync
+operations.</p>
+
+<blockquote>
+<p><strong><em>Note</em></strong>: the remote database details can be defined later in your code.</p>
+</blockquote>
+
+<p>At this point you can use <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html" title="Introduction to Core Data Programming Guide">Core Data</a> normally and your changes will
+be saved in the local <code>CDTDatastore</code> image.</p>
+
+<h2>
+<a id="supported-features" class="anchor" href="#supported-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Supported Features</h2>
+
+<p>The <a href="https://github.com/cloudant/CDTDatastore" title="Cloudant Sync iOS datastore library">Cloudant Sync</a> persistent store for <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html" title="Introduction to Core Data Programming Guide">Core Data</a> supports the following features:</p>
+
+<ul>
+<li>Save, fetch, update, and delete of Managed Objects to the on-device CDTDatastore.</li>
+<li>Batch update requests</li>
+<li>Asynchronous fetch operations</li>
+<li>Schema migration</li>
+</ul>
+
+<h2>
+<a id="unsupported-features" class="anchor" href="#unsupported-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unsupported Features</h2>
+
+<p>The following features of <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html" title="Introduction to Core Data Programming Guide">Core Data</a> are currently not supported by
+the <code>CDTIncrementalStore</code>:</p>
+
+<ul>
+<li>Predicates on string attributes using BEGINSWITH, ENDSWITH, LIKE, or MATCHES</li>
+<li>Compound predicates using the NOT operator</li>
+<li>Predicates on relationship attributes.</li>
+</ul>
+
+<h2>
+<a id="example-application" class="anchor" href="#example-application" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example Application</h2>
+
+<p>There is an example application based on
+<a href="https://developer.apple.com/library/ios/samplecode/iPhoneCoreDataRecipes/Introduction/Intro.html" title="iPhoneCoreDataRecipes">Apple's iPhoneCoreDataRecipes</a> and can be found in this
+<a href="http://github.com/jimix/iphonecoredatarecipes" title="Git Tree of iPhoneCoreDataRecipes">git tree</a>.</p>
+
+<h2>
+<a id="other-documents" class="anchor" href="#other-documents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other Documents</h2>
+
+<p>These can be found in the <a href="docs">docs</a> directory.</p>
+
+<ol>
+<li><a href="docs/replication.md">Replication</a></li>
+<li><a href="docs/portability.md">Portability</a></li>
+<li><a href="docs/internals.md">Internals</a></li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </section>
+    </div>
+
+    
+  </body>
+</html>
