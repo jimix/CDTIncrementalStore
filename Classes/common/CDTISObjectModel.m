@@ -233,10 +233,10 @@ static NSInteger typeCodeFromName(NSString *name)
         return NSInteger16AttributeType;
     }
     if ([name isEqualToString:CDTISInteger32AttributeType]) {
-        return NSInteger16AttributeType;
+        return NSInteger32AttributeType;
     }
     if ([name isEqualToString:CDTISInteger64AttributeType]) {
-        return NSInteger16AttributeType;
+        return NSInteger64AttributeType;
     }
     if ([name isEqualToString:CDTISRelationToOneTypeStr]) {
         return CDTISRelationToOneType;
