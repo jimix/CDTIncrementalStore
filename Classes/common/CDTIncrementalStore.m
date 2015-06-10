@@ -19,11 +19,25 @@
 
 #ifdef HAS_NSBatchUpdateRequest
 /**
- *  Currently NSBatchUpdateResult does not supply setters, so we have to.
+ *  Currently NSBatchUpdateResult does not supply setters.
+ *  We replicate the definition of the object but make them readwrite.
+ *  Later, we cast it back to the original class.. so far it works.
  */
-@implementation NSBatchUpdateResult
-- (void)setResultType:(NSBatchUpdateRequestResultType)resultType { _resultType = resultType; }
-- (void)setResult:(id)result { _result = result; }
+@interface CDTIS_NSBatchUpdateResult : NSPersistentStoreResult {
+@private
+    id _aggregatedResult;
+    NSBatchUpdateRequestResultType _resultType;
+
+}
+
+// Return the result. See NSBatchUpdateRequestResultType for options
+@property (strong, readwrite) id result;
+@property (readwrite) NSBatchUpdateRequestResultType resultType;
+
+@end
+
+@implementation CDTIS_NSBatchUpdateResult
+
 @end
 #endif
 
@@ -2020,7 +2034,7 @@ NSString *kNorOperator = @"$nor";
         return nil;
     }
 
-    NSBatchUpdateResult *updateResult = [NSBatchUpdateResult new];
+    CDTIS_NSBatchUpdateResult *updateResult = [CDTIS_NSBatchUpdateResult new];
     updateResult.resultType = updateRequest.resultType;
 
     switch (updateRequest.resultType) {
@@ -2041,7 +2055,7 @@ NSString *kNorOperator = @"$nor";
             break;
     }
 
-    return updateResult;
+    return (NSBatchUpdateResult *)updateResult;
 }
 #endif // HAS_NSBatchUpdateRequest
 
