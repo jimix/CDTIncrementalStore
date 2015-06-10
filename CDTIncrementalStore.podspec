@@ -1,3 +1,6 @@
+# pod spec lint --allow-warnings --use-libraries
+# pod trunk push --allow-warnings --use-libraries
+
 license = <<EOT
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,7 +17,7 @@ EOT
 
 Pod::Spec.new do |s|
   s.name         = "CDTIncrementalStore"
-  s.version      = "0.1.1"
+  s.version      = "0.1.2"
   s.summary      = "CDTIncrementalStore allows Core Data Frameworks to target CDTDatastore."
   s.description  = <<-DESC
                     CDTIncreamentalStore provides an Incremental Store
