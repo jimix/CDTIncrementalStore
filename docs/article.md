@@ -271,6 +271,37 @@ You can sign up for a [Cloudant] service at their site. Once you have
 registered and have launched into the dashboard, you will be given the
 opportunity to add a new database.
 
+## 1. Creating a New Database
+
+Once you are at the dashboard, you can:
+
+1. Select the `Databases` tab on the left
+2. Select `Add New Database`
+3. Call the new Database `recipes`
+4. Click `Create`
+
+<img src=images/create_db.png width="100%" />
+
+## 2. Generate an API key
+
+Now that the Database is created you can create an API key for the
+application:
+
+1. Click `Permissions`
+2. Click `Generate API key`
+
+<img src=images/permissions_db.png width="66%" />
+
+You will be granted a `Key` and a `Password`, you should record these
+and then give that `Key` permissions as `Reader`, `Writer` and
+`Replicator`.
+
+> ***Note***: When you navigate away from this page, there will be no
+> way to retrieve the password for this key. If you forget it, you can
+> simply generate a new pair and remove the old one.
+
+
+
 <!-- references -->
 
 [core data]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html "Introduction to Core Data Programming Guide"
@@ -318,5 +349,5 @@ opportunity to add a new database.
  -->
 <!--  LocalWords:  NSValueTransformer ImageToDataTransformer cloudant
  -->
-<!--  LocalWords:  debugmagic NSHipster datastore github
+<!--  LocalWords:  debugmagic NSHipster datastore github img src API
  -->
