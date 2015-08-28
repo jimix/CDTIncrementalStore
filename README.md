@@ -4,12 +4,10 @@
 [![Platform](http://cocoapod-badges.herokuapp.com/p/CDTIncrementalStore/badge.png)](http://cocoadocs.org/docsets/CDTIncrementalStore)
 [![Build Status](https://travis-ci.org/jimix/CDTIncrementalStore.png?branch=master)](https://travis-ci.org/jimix/CDTIncremetalStore)
 
-
 **An application can use `CDTIncrementalStore` to target
 [Cloudant Sync] as a [persistent store] for a [Core Data] application.**
 
-> ***Warning***: This document assumes you are familiar with [Core Data].
-
+This document assumes you are familiar with [Core Data].
 From the [Apple documents][core data]:
 >  The Core Data framework provides generalized and automated
 >  solutions to common tasks associated with object life-cycle and
@@ -22,6 +20,8 @@ this.
 
 Thankfully, the user does not need to know these details to exploit
 `CDTIncrementalStore` from an application that uses [Core Data].
+
+**Attention:** CDTIncrementalStore is an experimental framework and might be unstable or change frequently, and might be discontinued at short notice.  IBM does not guarantee or imply reliability, serviceability, or function of this framework. This framework is provided "AS IS", without warranty of any kind. IBM shall not be liable for any damages arising out of your use of this framework.
 
 ## Getting started
 
@@ -60,24 +60,19 @@ done elsewhere.  The common persistent store implementation is the
 #import <CDTIncrementalStore.h>
 
 NSURL *storeURL = [docsDir URLByAppendingPathComponent:@"mystore"];
-NSString *myType = [CDTIncrementalStore type];
 NSPersistentStoreCoordinator *psc = ...
-[psc addPersistentStoreWithType:myType
+[psc addPersistentStoreWithType:[CDTIncrementalStore type]
                   configuration:nil
                             URL:storeURL
                         options:nil
                           error:&error])];
 ```
 
-CDTIncrementalStore will use the last component of the storeURL as the
-name of the database.  This name must follow the Cloudant conventions,
-including containing only lowercase alpha, numeric, and underscore
-characters.  Do not specify a suffix, e.g. `".sqlite"`, as this is
-also not allowed.  If the storeURL has a host component, then it is
-also used as the remote database target of push, pull and sync
-operations.
-
-> ***Note***: the remote database details can be defined later in your code.
+The pathname of the storeURL may specify a suffix, e.g. `".cdtis"`,
+but none is required and no significance is given to the suffix.
+However, to avoid confusion, you should probably either change or remove
+the standard `".sqlite"` suffix when converting from a sqlite store to
+a `CDTIncrementalStore`.
 
 At this point you can use [Core Data] normally and your changes will
 be saved in the local `CDTDatastore` image.
@@ -106,6 +101,14 @@ the `CDTIncrementalStore`:
 There is an example application based on
 [Apple's iPhoneCoreDataRecipes][recipe] and can be found in this
 [git tree][gitrecipe].
+
+## Contributing to the project
+
+See [CONTRIBUTING](CONTRIBUTING.md).
+
+## License
+
+See [LICENSE](LICENSE)
 
 ## Other Documents
 These can be found in the [docs](docs) directory.
