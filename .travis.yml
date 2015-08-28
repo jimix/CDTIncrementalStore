@@ -25,3 +25,5 @@ before_script:
 script:
   - xctool -workspace CDTIncrementalStoreTest/CDTIncrementalStoreTest.xcworkspace -scheme "$CDTIS_SCHEME" -sdk "$CDTIS_SDK" "$CDTIS_DEST" $CDTIS_TARGETS
 
+after_success:
+  - bundle exec rake docs
